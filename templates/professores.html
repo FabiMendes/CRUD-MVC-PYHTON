@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores</title>
+</head>
+<body>
+    <h1>Lista de Professores</h1>
+    <a href="/professores/adicionar">Adicionar Professor</a>
+    <ul>
+        {% for professor in professores %}
+        <li>{{ professor.nome }} ({{ professor.disciplina }}) - <a href="/professores/deletar/{{ professor.id }}">Deletar</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

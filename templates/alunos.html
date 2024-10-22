@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0077cc, #ffffff); /* Degradê do azul para o branco */
+            height: 100vh; /* Altura de 100% da viewport */
+            font-family: Arial, sans-serif; /* Fonte do texto */
+            margin: 0;
+            padding: 20px;
+            color: #ffffff; /* Cor do texto */
+            background-size: cover; /* Cobre toda a tela */
+            background-attachment: fixed; /* Fundo fixo durante a rolagem (opcional) */
+        }
+
+        h1 {
+            color: #ffffff; /* Cor do título */
+        }
+
+        /* Estilo para o menu */
+        nav {
+            background-color: rgba(0, 119, 204, 0.8); /* Fundo do menu com leve transparência */
+            padding: 10px;
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+
+        ul {
+            list-style-type: none; /* Remove as bolinhas da lista */
+            padding: 0; /* Remove o padding da lista */
+            position: relative; /* Necessário para o dropdown */
+        }
+
+        li {
+            margin: 10px 0; /* Espaço entre os itens do menu */
+            position: relative; /* Necessário para o dropdown */
+        }
+
+        a {
+            color: #ffffff; /* Cor dos links */
+            text-decoration: none; /* Remove o sublinhado dos links */
+            font-weight: bold; /* Deixa os links em negrito */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Sublinha o link ao passar o mouse */
+        }
+
+        /* Estilos para o dropdown */
+        .dropdown {
+            display: inline-block; /* Mostra o dropdown na mesma linha */
+        }
+
+        .dropdown-content {
+            display: none; /* Esconde o conteúdo do dropdown */
+            position: absolute; /* Posiciona em relação ao item pai */
+            background-color: rgba(0, 119, 204, 0.9); /* Fundo do dropdown */
+            min-width: 160px; /* Largura mínima */
+            z-index: 1; /* Fica acima dos outros elementos */
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+
+        .dropdown-content a {
+            display: block; /* Mostra os links como blocos */
+            padding: 10px; /* Espaço interno */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* Mostra o conteúdo ao passar o mouse */
+        }
+
+        table {
+            width: 100%; /* Largura total da tabela */
+            border-collapse: collapse; /* Remove o espaço entre as células */
+            margin-top: 20px; /* Espaço acima da tabela */
+            display: none; /* Esconde a tabela inicialmente */
+        }
+
+        th, td {
+            border: 1px solid #ffffff; /* Borda das células */
+            padding: 8px; /* Espaço interno das células */
+            text-align: left; /* Alinhamento do texto */
+        }
+
+        th {
+            background-color: rgba(0, 119, 204, 0.7); /* Fundo dos cabeçalhos da tabela */
+            color: #ffffff; /* Cor do texto dos cabeçalhos */
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo para linhas pares */
+        }
+
+        .actions {
+            text-align: center; /* Centraliza o conteúdo da coluna de ações */
+        }
+
+        .button {
+            background-color: #ff3333; /* Cor de fundo do botão */
+            color: #ffffff; /* Cor do texto do botão */
+            border: none; /* Remove a borda do botão */
+            padding: 5px 10px; /* Espaçamento interno do botão */
+            cursor: pointer; /* Cursor em forma de mão ao passar o mouse */
+            border-radius: 5px; /* Bordas arredondadas do botão */
+        }
+
+        .button:hover {
+            background-color: #ff6666; /* Cor do botão ao passar o mouse */
+        }
+    </style>
+    <script>
+        function mostrarTabela() {
+            // Exibe a tabela de alunos
+            document.getElementById('tabela-alunos').style.display = 'table';
+        }
+    </script>
+</head>
+<body>
+    
+    <h1>Lista de Alunos</h1>
+    
+    <nav>
+        <ul>
+            <li class="dropdown">
+                <a href="#">Opções</a>
+                <div class="dropdown-content">
+                    <a href="/alunos/adicionar">Adicionar Aluno</a>
+                    <a href="#" onclick="mostrarTabela()">Consultar Aluno</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <table id="tabela-alunos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th class="actions">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.idade }} anos</td>
+                <td class="actions">
+                    <a href="/alunos/deletar/{{ aluno.id }}" class="button">Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="http://127.0.0.1:5000/"> 
+        <button>Voltar para o Index</button>
+    </a>
+</body>
+</html>

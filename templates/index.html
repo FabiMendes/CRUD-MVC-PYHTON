@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0077cc, #ffffff); /* Degradê do azul para o branco */
+            height: 100vh; /* Altura de 100% da viewport */
+            font-family: Arial, sans-serif; /* Fonte do texto */
+            margin: 0;
+            padding: 20px;
+            color: #ffffff; /* Cor do texto */
+        }
+
+        h1 {
+            color: #ffffff; /* Cor do título */
+        }
+
+        /* Estilo para o menu */
+        nav {
+            background-color: rgba(0, 119, 204, 0.8); /* Fundo do menu com leve transparência */
+            padding: 10px;
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+
+        ul {
+            list-style-type: none; /* Remove as bolinhas da lista */
+            padding: 0; /* Remove o padding da lista */
+            position: relative; /* Necessário para o dropdown */
+        }
+
+        li {
+            margin: 10px 0; /* Espaço entre os itens do menu */
+            position: relative; /* Necessário para o dropdown */
+        }
+
+        a {
+            color: #ffffff; /* Cor dos links */
+            text-decoration: none; /* Remove o sublinhado dos links */
+            font-weight: bold; /* Deixa os links em negrito */
+            display: block; /* Para que o link ocupe toda a área do item */
+            padding: 8px; /* Adiciona padding ao link */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Sublinha o link ao passar o mouse */
+        }
+
+        /* Estilo do dropdown */
+        .dropdown {
+            display: none; /* Esconde o dropdown por padrão */
+            position: absolute; /* Para posicionar em relação ao item pai */
+            left: 0;
+            top: 100%; /* Coloca logo abaixo do item pai */
+            background-color: rgba(0, 119, 204, 0.9); /* Cor do fundo do dropdown */
+            border-radius: 5px; /* Bordas arredondadas */
+            z-index: 1000; /* Garante que fique acima de outros elementos */
+        }
+
+        li:hover .dropdown {
+            display: block; /* Mostra o dropdown ao passar o mouse */
+        }
+
+        .dropdown li {
+            margin: 0; /* Remove a margem dos itens do dropdown */
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Bem-vindo à Escola</h1>
+    
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Gerenciar</a> <!-- Título do dropdown -->
+                <ul class="dropdown">
+                    <li><a href="/professores/">Gerenciar Professores</a></li>
+                    <li><a href="/alunos/">Gerenciar Alunos</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
