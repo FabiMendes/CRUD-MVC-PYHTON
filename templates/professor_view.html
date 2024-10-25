@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Professor</title>
+</head>
+
+    <h1>Adicionar Professor</h1>
+    <form action="/professores/adicionar" method="POST">
+        Nome: <input type="text" name="nome"><br>
+        Disciplina: <input type="text" name="disciplina"><br>
+        <input type="submit" value="Adicionar">
+    </form>
+    <body>
+        <h1>Lista de Professores</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Matéria</th>
+                <th>Observações</th>
+            </tr>
+            {% for professor in professores %}
+            <tr>
+                <td>{{ professor.id }}</td>
+                <td>{{ professor.nome }}</td>
+                <td>{{ professor.idade }}</td>
+                <td>{{ professor.materia }}</td>
+                <td>{{ professor.observacoes }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('professores.adicionar_professor') }}">Adicionar Professor</a>
+
+</body>
+</html>
