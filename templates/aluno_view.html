@@ -6,11 +6,33 @@
     <title>Adicionar Aluno</title>
 </head>
 <body>
-    <h1>Adicionar Aluno</h1>
-    <form action="/alunos/adicionar" method="POST">
-        Nome: <input type="text" name="nome"><br>
-        Idade: <input type="number" name="idade"><br>
-        <input type="submit" value="Adicionar">
-    </form>
+    <body>
+        <h1>Lista de Alunos</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Turma</th>
+                <th>Data de Nascimento</th>
+                <th>Nota 1º Semestre</th>
+                <th>Nota 2º Semestre</th>
+                <th>Média Final</th>
+            </tr>
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.id }}</td>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.idade }}</td>
+                <td>{{ aluno.turma.descricao }}</td>
+                <td>{{ aluno.data_nascimento }}</td>
+                <td>{{ aluno.nota_primeiro_semestre }}</td>
+                <td>{{ aluno.nota_segundo_semestre }}</td>
+                <td>{{ aluno.media_final }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('alunos.adicionar_aluno') }}">Adicionar Aluno</a>
+    </body>
 </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turmas</title>
+</head>
+<body>
+    <h1>Lista de Turmas</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Professor</th>
+            <th>Ativo</th>
+        </tr> 
+        {% for turma in turmas %}
+        <tr>
+            <td>{{ turma.id }}</td>
+            <td>{{ turma.descricao }}</td>
+            <td>{{ turma.professor.nome }}</td>
+            <td>{{ turma.ativo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('turmas.adicionar_turma') }}">Adicionar Turma</a>
+</body>
+</html>
